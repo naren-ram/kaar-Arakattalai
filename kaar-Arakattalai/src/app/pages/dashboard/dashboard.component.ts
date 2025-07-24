@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { TopContributionsComponent } from '../../components/top-contributions/top-contributions.component';
 
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [],
+  imports: [TopContributionsComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
-
-}
+export class DashboardComponent {}
