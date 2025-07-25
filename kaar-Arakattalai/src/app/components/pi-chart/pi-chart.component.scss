@@ -1,12 +1,12 @@
 .chart-container {
-  width: 100%;
+  width: 300px;
   max-width: 200px; /* Chart stays the same size */
-  height: 200px;    /* Chart stays the same size */
+  height: 50px;    /* Chart stays the same size */
   margin: auto;
-  position: absolute;
+  position: fixed;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
-  padding: 40px;              /* Increased from 15px to 25px */
+  padding: 10px;              /* Increased from 15px to 25px */
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 

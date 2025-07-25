@@ -47,23 +47,13 @@
 .dashboard-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   gap: 40px; // Space between charts
 }
 
-.dashboard-chart-wrapper {
-  width: 350px;
-  height: 250px;
-  margin: 40px auto 60px auto; // Top, right, bottom, left
-}
+// .dashboard-chart-wrapper {
+//   width: 350px;
+//   height: 250px;
+//   margin: 40px auto 60px auto; // Top, right, bottom, left
+// }
 
-.areachart-chart-wrapper {
-  width: 100%;
-  max-width: 1200px;
-  height: 400px;
-  margin: 0 auto;
-  font-family: 'DM Sans', sans-serif;
-  background: none;
-  box-shadow: none;
-  padding-top: 20px; // Add space above the area chart
-}
