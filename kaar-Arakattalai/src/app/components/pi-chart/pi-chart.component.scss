@@ -1,9 +1,9 @@
 .chart-container {
   width: 300px;
   max-width: 200px; /* Chart stays the same size */
-  height: 50px;    /* Chart stays the same size */
+  height: 1 0px;    /* Chart stays the same size */
   margin: auto;
-  position: fixed;
+  position: relative;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   padding: 10px;              /* Increased from 15px to 25px */
@@ -20,8 +20,8 @@
   }
 
   canvas {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100% ;
+    height: 100%;
   }
 
 
