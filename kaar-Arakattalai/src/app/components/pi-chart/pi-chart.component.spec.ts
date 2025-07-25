@@ -1,36 +1,23 @@
-import { Component } from '@angular/core';
-import { ChartConfiguration, ChartType } from 'chart.js';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PiChartComponent } from './pi-chart.component';
 
-@Component({
-  selector: 'app-pi-chart',
-  templateUrl: './pi-chart.component.html',
-  styleUrls: ['./pi-chart.component.scss'],
-})
-export class PiChartComponent {
-  public doughnutChartType: ChartType = 'doughnut';
+describe('PiChartComponent', () => {
+  let component: PiChartComponent;
+  let fixture: ComponentFixture<PiChartComponent>;
 
-  public doughnutChartData = {
-    labels: ['Education', 'Medical', 'CSR', 'Laptop'],
-    datasets: [
-      {
-        data: [35, 25, 20, 20],
-        backgroundColor: ['#F97316', '#0EA5E9', '#10B981', '#EAB308'],
-        hoverOffset: 4,
-        cutout: '70%'  // 👈 This goes here in Chart.js v4+
-      }
-    ]
-  };
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PiChartComponent], // if standalone
+    }).compileComponents();
 
-  public chartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          boxWidth: 12
-        }
-      }
-    }
-  };
-}
+    fixture = TestBed.createComponent(PiChartComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // Add more unit tests if needed
+});

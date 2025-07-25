@@ -49,12 +49,13 @@ export class PiChartComponent implements OnInit {
                 boxHeight: 8,         // Set height to match width for smaller circles
                 usePointStyle: true,
                 padding: 15           // Reduced padding for tighter spacing
-              }
+              },
+              onClick: () => {} // Disable legend click functionality
             }
           },
           layout: {
             padding: {
-              bottom: 30
+              bottom: 20 // Increased from 30 to 50 to move legend lower
             }
           }
         }
