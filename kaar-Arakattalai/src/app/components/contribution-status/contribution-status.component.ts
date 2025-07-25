@@ -7,16 +7,18 @@ import { Component, Input } from '@angular/core';
   template: `
     <div class="status-card">
       <h3>Contribution Status</h3>
-      <p>Status: {{ status }}</p>
-      <p>Annual Contribution: ₹{{ annualContribution }}</p>
+      <p>Status: Active</p>
+      <p>Annual Contribution: ₹8000</p>
     </div>
   `,
   styles: [`
     .status-card {
-      border: 1px solid #ccc;
+      border: 1px solid #ff0000;
       padding: 16px;
       border-radius: 8px;
       background-color: #f9f9f9;
+      width: 260px; /* Reduced width */
+      margin: 0 auto; /* Center the card */
     }
   `]
 })

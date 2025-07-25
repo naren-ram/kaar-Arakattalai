@@ -60,6 +60,30 @@
   gap: 40px; // Space between charts
 }
 
+.dashboard-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 400px;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+.left-panel {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.center-panel {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 // .dashboard-chart-wrapper {
 //   width: 350px;
 //   height: 250px;
