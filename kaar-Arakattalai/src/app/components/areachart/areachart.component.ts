@@ -120,9 +120,15 @@ export class AreachartComponent implements AfterViewInit, OnDestroy {
             display: true,
             text: 'Contribution',
             font: {
-              family: 'DM Sans, sans-serif'
+              family: 'DM Sans, sans-serif',
             }
           },
+          ticks: {
+      font: {
+        family: 'DM Sans, sans-serif',
+        size: 8 
+      }
+    },
           grid: {
             display: false
           }
