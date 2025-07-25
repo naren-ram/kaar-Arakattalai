@@ -31,9 +31,9 @@ export class PiChartComponent implements OnInit {
         data: {
           labels: ['Approved', 'Rejected', 'In Process'],
           datasets: [{
-            data: [24, 0, 62],
-            backgroundColor: ['#A3E635', '#FCA5A5', '#FB923C'],
-            hoverBackgroundColor: ['#84cc16', '#f87171', '#f97316'],
+            data: [24, 100, 62],
+            backgroundColor: ['#A3E635', '#9e9c9cff', '#FB923C'],
+            hoverBackgroundColor: ['#84cc16', '#827f7fff', '#f97316'],
             borderWidth: 0
           }]
         },
