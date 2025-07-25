@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'my-referrals',
-  standalone: true,
+  selector: 'app-my-referrals',
   templateUrl: './my-referrals.component.html',
-  styleUrl: './my-referrals.component.scss'
+  styleUrls: ['./my-referrals.component.scss']
 })
-export class MyReferralsComponent {}
+export class MyReferralsComponent implements OnInit {
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    // Initialize referrals data here
+  }
+
+  // Add any referrals-specific methods here
+  onNavigateToDashboard(): void {
+    this.router.navigate(['/dashboard']);
+  }
+}

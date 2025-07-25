@@ -17,6 +17,12 @@
     min-width: 150px;
 }
 
+.contribution-value {
+    color: #EE4961; /* Red color for the number */
+    font-weight: 700; /* Make it bold */
+    font-family: 'DM Sans' !important;
+}
+
 .right-button {
     font-family: 'DM Sans' !important; /* Force DM Sans only */
     padding: 8px 16px;

@@ -10,9 +10,16 @@ import { ContributionStatusComponent } from './components/contribution-status/co
 
 import { appRoutes } from './app.routes';
 
+
 @NgModule({
   // ❌ NO declarations for standalone components
   declarations: [
+<<<<<<< HEAD
+=======
+    AppComponent,
+    DashboardComponent,
+    MyReferralsComponent,
+>>>>>>> 1c1f68a37894b135764bd38e755046aebdf39b10
   ],
   imports: [
     BrowserModule,

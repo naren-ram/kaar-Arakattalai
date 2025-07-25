@@ -31,9 +31,9 @@ export class PiChartComponent implements OnInit {
         data: {
           labels: ['Approved', 'Rejected', 'In Process'],
           datasets: [{
-            data: [24, 0, 62],
-            backgroundColor: ['#A3E635', '#FCA5A5', '#FB923C'],
-            hoverBackgroundColor: ['#84cc16', '#f87171', '#f97316'],
+            data: [24, 100, 62],
+            backgroundColor: ['#A3E635', '#9e9c9cff', '#FB923C'],
+            hoverBackgroundColor: ['#84cc16', '#827f7fff', '#f97316'],
             borderWidth: 0
           }]
         },
@@ -45,16 +45,18 @@ export class PiChartComponent implements OnInit {
             legend: {
               position: 'bottom',
               labels: {
-                boxWidth: 8,          // Reduced from 12 to 8 for smaller circles
-                boxHeight: 8,         // Set height to match width for smaller circles
+                boxWidth: 6,          // Reduced from 12 to 8 for smaller circles
+                boxHeight: 6,         // Set height to match width for smaller circles
                 usePointStyle: true,
-                padding: 15           // Reduced padding for tighter spacing
-              }
+                padding: 12       // Reduced padding for tighter spacing
+              },
+              onClick: () => {} // Disable legend click functionality
             }
           },
           layout: {
             padding: {
-              bottom: 30
+              top: 0,
+              bottom: 0 // Increased from 30 to 50 to move legend lower
             }
           }
         }
