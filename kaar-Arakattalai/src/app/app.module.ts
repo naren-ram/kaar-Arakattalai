@@ -14,12 +14,9 @@ import { appRoutes } from './app.routes';
 @NgModule({
   // ❌ NO declarations for standalone components
   declarations: [
-<<<<<<< HEAD
-=======
     AppComponent,
     DashboardComponent,
     MyReferralsComponent,
->>>>>>> 1c1f68a37894b135764bd38e755046aebdf39b10
   ],
   imports: [
     BrowserModule,
@@ -29,7 +26,7 @@ import { appRoutes } from './app.routes';
     AppComponent,
     DashboardComponent,
     MyReferralsComponent,
-    ContributionStatusComponent
+    
   ],
   // ❌ DO NOT bootstrap standalone components here
   // bootstrap: [AppComponent]
