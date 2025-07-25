@@ -1,37 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-
-// Standalone components should be IMPORTED, not DECLARED
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { MyReferralsComponent } from './pages/my-referrals/my-referrals.component';
-import { ContributionStatusComponent } from './components/contribution-status/contribution-status.component';
-
 import { appRoutes } from './app.routes';
+import { AppComponent } from './app.component';
+import { DashboardComponent} from './pages/dashboard/dashboard.component';
+import { MyReferralsComponent } from './pages/my-referrals/my-referrals.component';
 
 
 @NgModule({
-  // ❌ NO declarations for standalone components
   declarations: [
-<<<<<<< HEAD
-=======
     AppComponent,
     DashboardComponent,
     MyReferralsComponent,
->>>>>>> 1c1f68a37894b135764bd38e755046aebdf39b10
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
-
-    // ✅ Import standalone components here
-    AppComponent,
-    DashboardComponent,
-    MyReferralsComponent,
-    ContributionStatusComponent
+    appRoutes  
   ],
-  // ❌ DO NOT bootstrap standalone components here
-  // bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
