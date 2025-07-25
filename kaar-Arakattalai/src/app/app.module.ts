@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { DashboardComponent} from './pages/dashboard/dashboard.component';
 import { MyReferralsComponent } from './pages/my-referrals/my-referrals.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    MyReferralsComponent
+    MyReferralsComponent,
   ],
   imports: [
     BrowserModule,
