@@ -2,9 +2,12 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app/app.routes';
+import { importProvidersFrom } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; // ✅ Import this
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(appRoutes)
+    provideRouter(appRoutes),
+    importProvidersFrom(HttpClientModule) // ✅ Provide it here
   ]
 });

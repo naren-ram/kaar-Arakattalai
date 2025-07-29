@@ -1,0 +1,86 @@
+/* === RESET AG GRID BORDERS AND OUTLINES === */
+.custom-ag-grid .ag-root-wrapper,
+.custom-ag-grid .ag-header,
+.custom-ag-grid .ag-header-cell,
+.custom-ag-grid .ag-cell,
+.custom-ag-grid .ag-row,
+.custom-ag-grid .ag-body-horizontal-scroll,
+.custom-ag-grid .ag-center-cols-clipper,
+.custom-ag-grid .ag-cell-focus,
+.custom-ag-grid .ag-row-focus,
+.custom-ag-grid .ag-cell.ag-cell-last-left-pinned,
+.custom-ag-grid .ag-cell.ag-cell-first-right-pinned {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* === Optional: Remove sidebar border === */
+.custom-ag-grid .ag-side-bar {
+  border-left: none !important;
+}
+
+/* === HEADER STYLING === */
+.custom-ag-grid .ag-header {
+  background-color: #F5F6F9 !important;
+}
+
+.custom-ag-grid .ag-header-cell {
+  background-color: #F0F0F0 !important;
+  color: #515965 !important;
+  font-weight: 600;
+  font-size: 14px;
+  border: none !important;
+}
+
+/* === ROW STYLING === */
+.custom-ag-grid .ag-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.custom-ag-grid .ag-row:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.custom-ag-grid .ag-row:hover {
+  background-color: #eaf4ff !important;
+  cursor: pointer;
+}
+
+/* === Add only bottom border for rows === */
+.custom-ag-grid .ag-row {
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+/* === STATUS PILL STYLES === */
+.status-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 12px;
+  height: 26px;
+  text-align: center;
+}
+
+.status-pill.approved {
+  background-color: rgba(56, 161, 105, 0.2);
+  color: #38a169;
+}
+
+.status-pill.rejected {
+  background-color: rgba(229, 62, 62, 0.2);
+  color: #e53e3e;
+}
+
+.status-pill.pending {
+  background-color: rgba(237, 137, 54, 0.2);
+  color: #ed8936;
+}
+
+.status-pill.unknown {
+  background-color: rgba(113, 128, 150, 0.2);
+  color: #718096;
+}
