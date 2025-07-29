@@ -46,8 +46,8 @@ import { FormsModule } from '@angular/forms';
     .update-contribution-box {
       padding: 16px;
       border-radius: 8px;
-      background-color: #f9f9f9;
-      border: 1px solid #ff0000;
+      background-color: #ffffff;
+      border: 13 px solid #0d0d0dff;
       width: 260px;
       margin: 1rem auto;
       font-family: 'DM Sans', sans-serif;
@@ -74,7 +74,7 @@ import { FormsModule } from '@angular/forms';
       appearance: none;
       height: 6px;
       border-radius: 3px;
-      background: linear-gradient(to right, #f85e72, #f6d0d5);
+      background: linear-gradient(to right,#f6d0d5, #f85e72 );
       outline: none;
       transition: background 0.3s;
     }

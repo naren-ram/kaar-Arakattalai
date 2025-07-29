@@ -1,4 +1,9 @@
 /* Force DM Sans ONLY - no fallbacks */
+body {
+  background-color: #FAFAFA;
+  margin: 0; /* Optional: to avoid default body margin */
+  min-height: 100vh; /* Ensure it covers full viewport height */
+}
 * {
   font-family: 'DM Sans' !important;
 }

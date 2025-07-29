@@ -26,9 +26,4 @@ export class MenubarComponent implements OnInit {
     // For now, simulating backend response
     this.totalContribution = 79;
   }
-
-  handleClick() {
-    console.log('Logout clicked');
-    // Add any logic you want here
-  }
 }

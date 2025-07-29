@@ -4,7 +4,6 @@ import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { DashboardComponent} from './pages/dashboard/dashboard.component';
 import { MyReferralsComponent } from './pages/my-referrals/my-referrals.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,8 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    appRoutes,
-    HttpClientModule  
+    appRoutes  
   ],
   providers: [],
   bootstrap: [AppComponent]
