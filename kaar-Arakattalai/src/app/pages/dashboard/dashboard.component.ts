@@ -3,7 +3,7 @@ import { MenubarComponent } from '../../components/menubar/menubar.component';
 import { PiChartComponent } from '../../components/pi-chart/pi-chart.component';
 import { ContributionStatusComponent } from '../../components/contribution-status/contribution-status.component';
 import { AreachartComponent } from '../../components/areachart/areachart.component';
-
+import { UpdateContributionComponent } from '../../components/update-contribution/update-contribution.component';
 
 @Component({
   selector: 'dashboard',
@@ -12,9 +12,9 @@ import { AreachartComponent } from '../../components/areachart/areachart.compone
     MenubarComponent,
     PiChartComponent,
     ContributionStatusComponent,
-    AreachartComponent
+    AreachartComponent,
+    UpdateContributionComponent
   ],
-  
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
