@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormTypeOverlayComponent } from '../form-type-overlay/form-type-overlay.component';
 
 @Component({
   selector: 'app-menubar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormTypeOverlayComponent] ,
   templateUrl: './menubar.component.html',
   styleUrl: './menubar.component.scss'
 })
 export class MenubarComponent implements OnInit {
+  showOverlay = false;
   totalContribution: number = 0;
 
   ngOnInit() {

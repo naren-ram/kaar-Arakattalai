@@ -1,0 +1,13 @@
+<div class="overlay-backdrop" (click)="closeOverlay()">
+  <div class="overlay-panel" (click)="$event.stopPropagation()">
+    <h2>Select Form Type</h2>
+    <div class="form-options">
+      <button>Education</button>
+      <button>Medical</button>
+      <button>CSR expenses</button>
+      <button>Laptop request</button>
+      <!-- Add more buttons as needed -->
+    </div>
+  </div>
+</div>
+

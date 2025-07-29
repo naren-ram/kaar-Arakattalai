@@ -1,4 +1,5 @@
 <div class="menubar-container">
   <div class="left-text">Total Contribution <span class="contribution-value">{{ totalContribution }}</span></div>
-  <button class="right-button" (click)="handleClick()">Refer Someone</button>
+  <button class="right-button" (click)="showOverlay = true">Refer Someone</button>
+  <app-form-type-overlay *ngIf="showOverlay" (closed)="showOverlay = false"></app-form-type-overlay>
 </div>
