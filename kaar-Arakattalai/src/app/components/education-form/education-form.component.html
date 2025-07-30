@@ -1,0 +1,64 @@
+<div class="overlay">
+  <div class="drawer">
+    <div class="header">
+      <div class="left">
+        <h2>Education Form</h2>
+      </div>
+      <div class="right-buttons">
+        <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+        <button class="submit-btn" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+
+    <div class="toggle">
+      <button [class.active]="selectedType === 'Individual'" (click)="setType('Individual')">Individual</button>
+      <button [class.active]="selectedType === 'NGO'" (click)="setType('NGO')">NGO</button>
+    </div>
+
+    <!-- INDIVIDUAL FORM -->
+    <form *ngIf="selectedType === 'Individual'" [formGroup]="educationForm">
+      <div class="form-grid">
+        <div class="form-group"><label>Beneficiary Name *</label><input formControlName="beneficiaryName" /></div>
+        <div class="form-group"><label>Mobile Number *</label><input formControlName="mobile" /></div>
+        <div class="form-group"><label>Institution Name *</label><input formControlName="institutionName" /></div>
+        <div class="form-group"><label>Institution Location *</label><input formControlName="institutionLocation" /></div>
+        <div class="form-group"><label>Account Name For DD *</label><input formControlName="accountName" /></div>
+        <div class="form-group"><label>Requesting Amount *</label><input formControlName="amount" /></div>
+
+        <div class="form-group full">
+          <label>Employee’s Justification *</label>
+          <textarea formControlName="justification" (input)="onTextChange($event)"></textarea>
+          <div class="char-count">{{charCount}} / 225</div>
+        </div>
+
+        <div class="form-group full" *ngFor="let field of ['bonafide','idCard','idCard2','aadhar','certificate']">
+          <label>
+            {{
+              field === 'bonafide' ? 'Bonafide Certificate (Tuition Fee) *' :
+              field === 'idCard' ? 'School/College ID *' :
+              field === 'idCard2' ? 'School/College ID *' :
+              field === 'aadhar' ? 'Parent’s Aadhar Card *' :
+              'Death Certificate/Disability Certificate (If Applicable)'
+            }}
+          </label>
+          <input type="file" (change)="onFileChange($event, field)" />
+        </div>
+
+        <div class="form-group checkbox full">
+          <input type="checkbox" formControlName="declaration" />
+          <label>I hereby authenticate that the documents provided are GENUINE *</label>
+        </div>
+      </div>
+    </form>
+
+    <!-- NGO FORM -->
+    <form *ngIf="selectedType === 'NGO'" [formGroup]="educationForm">
+      <div class="form-grid">
+        <div class="form-group"><label>NGO Name *</label><input formControlName="ngoName" /></div>
+        <div class="form-group"><label>Registration Number *</label><input formControlName="ngoRegNo" /></div>
+        <div class="form-group"><label>Contact Number *</label><input formControlName="ngoContact" /></div>
+        <div class="form-group full"><label>NGO Address *</label><input formControlName="ngoAddress" /></div>
+      </div>
+    </form>
+  </div>
+</div>
