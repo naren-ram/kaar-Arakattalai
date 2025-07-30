@@ -13,12 +13,13 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [`
     .status-card {
-      border: 1px solid #ff0000;
+      border: 1px solid #f8f3f3ff;
       padding: 16px;
       border-radius: 8px;
-      background-color: #f9f9f9;
+      background-color: #ffffff;
       width: 260px; /* Reduced width */
       margin: 0 auto; /* Center the card */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   `]
 })

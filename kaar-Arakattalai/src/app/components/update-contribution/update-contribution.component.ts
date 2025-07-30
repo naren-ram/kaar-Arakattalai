@@ -51,6 +51,7 @@ import { FormsModule } from '@angular/forms';
       width: 260px;
       margin: 1rem auto;
       font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .currency-label {
