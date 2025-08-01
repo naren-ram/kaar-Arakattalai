@@ -71,19 +71,19 @@ export class SummaryConsComponent {
     const styles: { [key: string]: { [key: string]: string } } = {
       all: {
         borderLeftColor: '#e03b58',
-        color: '#e03b58'
+        color: '#515965'
       },
       approved: {
         borderLeftColor: '#4caf50',
-        color: '#4caf50'
+        color: '#515965'
       },
       inprogress: {
         borderLeftColor: '#ff9800',
-        color: '#ff9800'
+        color: '#515965'
       },
       rejected: {
         borderLeftColor: '#f44336',
-        color: '#f44336'
+        color: '#515965'
       }
     };
     return styles[status.toLowerCase()] || {};
