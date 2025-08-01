@@ -1,0 +1,70 @@
+<div class="overlay">
+  <div class="drawer">
+    <div class="header">
+      <div class="left">
+        <h2>Medical Form</h2>
+      </div>
+      <div class="right-buttons">
+        <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+        <button class="submit-btn" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+
+    <div class="toggle">
+      <button [class.active]="selectedType === 'Individual'" (click)="setType('Individual')">Individual</button>
+      <button [class.active]="selectedType === 'NGO'" (click)="setType('NGO')">NGO</button>
+    </div>
+
+    <!-- INDIVIDUAL FORM -->
+    <form *ngIf="selectedType === 'Individual'" [formGroup]="medicalForm">
+      <div class="form-grid">
+        <div class="form-group"><label>Patient Name *</label><input formControlName="patientName" /></div>
+        <div class="form-group"><label>Mobile Number *</label><input formControlName="mobile" /></div>
+        <div class="form-group"><label>Hospital Name *</label><input formControlName="hospitalName" /></div>
+        <div class="form-group"><label>Hospital Location *</label><input formControlName="hospitalLocation" /></div>
+        <div class="form-group"><label>Account Name For DD *</label><input formControlName="accountName" /></div>
+        <div class="form-group"><label>Requesting Amount *</label><input formControlName="amount" /></div>
+
+        <div class="form-group full">
+          <label>Diagnosis *</label>
+          <textarea formControlName="diagnosis" (input)="onTextChange($event)"></textarea>
+          <div class="char-count">{{charCount}} / 225</div>
+        </div>
+
+        <div class="form-group full">
+          <label>Treatment Required *</label>
+          <textarea formControlName="treatment" (input)="onTextChange($event)"></textarea>
+          <div class="char-count">{{charCount}} / 225</div>
+        </div>
+
+        <div class="form-group full" *ngFor="let field of ['prescription','medicalReport','idCard','aadhar','dischargeSummary']">
+          <label>
+            {{
+              field === 'prescription' ? 'Doctor\'s Prescription *' :
+              field === 'medicalReport' ? 'Medical Reports *' :
+              field === 'idCard' ? 'Patient ID Card *' :
+              field === 'aadhar' ? 'Patient\'s Aadhar Card *' :
+              'Discharge Summary (If Applicable)'
+            }}
+          </label>
+          <input type="file" (change)="onFileChange($event, field)" />
+        </div>
+
+        <div class="form-group checkbox full">
+          <input type="checkbox" formControlName="declaration" />
+          <label>I hereby authenticate that the medical documents provided are GENUINE *</label>
+        </div>
+      </div>
+    </form>
+
+    <!-- NGO FORM -->
+    <form *ngIf="selectedType === 'NGO'" [formGroup]="medicalForm">
+      <div class="form-grid">
+        <div class="form-group"><label>NGO Name *</label><input formControlName="ngoName" /></div>
+        <div class="form-group"><label>Registration Number *</label><input formControlName="ngoRegNo" /></div>
+        <div class="form-group"><label>Contact Number *</label><input formControlName="ngoContact" /></div>
+        <div class="form-group full"><label>NGO Address *</label><input formControlName="ngoAddress" /></div>
+      </div>
+    </form>
+  </div>
+</div> 

@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EducationFormComponent } from '../education-form/education-form.component';
+import { MedicalFormComponent } from '../medical-form/medical-form.component';
 
 @Component({
   selector: 'app-form-type-overlay',
   standalone: true,
-  imports: [CommonModule, EducationFormComponent],
+  imports: [CommonModule, EducationFormComponent, MedicalFormComponent],
   templateUrl: './form-type-overlay.component.html',
   styleUrls: ['./form-type-overlay.component.scss']
 })
@@ -16,14 +17,23 @@ export class FormTypeOverlayComponent {
     this.closed.emit();
   }
 
-  showForm = false;
+  showEducationForm = false;
+  showMedicalForm = false;
 
-  openForm() {
-    this.showForm = true;
+  openEducationForm() {
+    this.showEducationForm = true;
   }
 
-  closeForm() {
-    this.showForm = false;
+  closeEducationForm() {
+    this.showEducationForm = false;
+  }
+
+  openMedicalForm() {
+    this.showMedicalForm = true;
+  }
+
+  closeMedicalForm() {
+    this.showMedicalForm = false;
   }
 }
 

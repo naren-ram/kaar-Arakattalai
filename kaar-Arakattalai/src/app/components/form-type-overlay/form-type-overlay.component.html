@@ -2,9 +2,10 @@
   <div class="overlay-panel" (click)="$event.stopPropagation()">
     <h2>Select Form Type</h2>
     <div class="form-options">
-      <button (click)="openForm()">Education</button>
-      <app-education-form *ngIf="showForm" (formClosed)="closeForm()"></app-education-form>
-      <button>Medical</button>
+      <button (click)="openEducationForm()">Education</button>
+      <app-education-form *ngIf="showEducationForm" (formClosed)="closeEducationForm()"></app-education-form>
+      <button (click)="openMedicalForm()">Medical</button>
+      <app-medical-form *ngIf="showMedicalForm" (formClosed)="closeMedicalForm()"></app-medical-form>
       <button>CSR expenses</button>
       <button>Laptop request</button>
       <!-- Add more buttons as needed -->

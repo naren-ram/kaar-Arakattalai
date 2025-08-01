@@ -1,5 +1,6 @@
 /* Wrapper around the full referrals page */
 .referral-page-wrapper {
+  display: block;
   padding: 0;
   margin: 0 auto;
   max-width: 100%;
@@ -13,6 +14,8 @@ app-summary-cons {
   margin-bottom: 0.5rem;        // ✅ Small space below for visual clarity
   margin-left: 0.10rem;
   margin-right: 0.10rem;
+  border-color: red;
+  border-width: 100px; // ✅ Match border color with the table
 }
 
 /* 🔧 Referral Table: Align with summary boxes */
@@ -20,6 +23,7 @@ app-referral-table {
   display: block;
   margin-left: 0.20rem;
   margin-right: 0.10rem;
+   margin-top: 0;
 }
 
 /* ✅ Responsive tweak for mobile */

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RequestService } from '../../services/requests.service';
 
 @Component({
   standalone: true,
@@ -30,7 +31,6 @@ import { CommonModule } from '@angular/common';
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1rem;
       align-items: flex-start;
     }
 
@@ -59,13 +59,44 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class SummaryConsComponent {
+export class SummaryConsComponent implements OnInit {
   statusSummary = [
-    { status: 'all', label: 'All', count: 5186 },
-    { status: 'approved', label: 'Approved', count: 5186 },
-    { status: 'inprogress', label: 'InProgress', count: 24 },
-    { status: 'rejected', label: 'Rejected', count: 5186 },
+    { status: 'all', label: 'All', count: 0 },
+    { status: 'approved', label: 'Approved', count: 0 },
+    { status: 'inprogress', label: 'InProgress', count: 0 },
+    { status: 'rejected', label: 'Rejected', count: 0 },
   ];
+
+  constructor(private requestService: RequestService) {}
+
+  ngOnInit(): void {
+    this.loadSummaryData();
+  }
+
+  loadSummaryData(): void {
+    this.requestService.getAllCount().subscribe((count: number) => {
+      this.updateCount('all', count);
+    });
+
+    this.requestService.getApprovedCount().subscribe((count: number) => {
+      this.updateCount('approved', count);
+    });
+
+    this.requestService.getInProgressCount().subscribe((count: number) => {
+      this.updateCount('inprogress', count);
+    });
+
+    this.requestService.getRejectedCount().subscribe((count: number) => {
+      this.updateCount('rejected', count);
+    });
+  }
+
+  updateCount(status: string, count: number): void {
+    const item = this.statusSummary.find(s => s.status === status);
+    if (item) {
+      item.count = count;
+    }
+  }
 
   getStyle(status: string): { [key: string]: string } {
     const styles: { [key: string]: { [key: string]: string } } = {
