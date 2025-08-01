@@ -1,14 +1,47 @@
 <div class="overlay-backdrop" (click)="closeOverlay()">
   <div class="overlay-panel" (click)="$event.stopPropagation()">
+    <div class="close-button" (click)="closeOverlay()">×</div>
     <h2>Select Form Type</h2>
+    <p class="subtitle">Choose the type of support you want to refer someone for</p>
+    
     <div class="form-options">
-      <button (click)="openForm()">Education</button>
-      <app-education-form *ngIf="showForm" (formClosed)="closeForm()"></app-education-form>
-      <button>Medical</button>
-      <button>CSR expenses</button>
-      <button>Laptop request</button>
-      <!-- Add more buttons as needed -->
+      <div class="option-card" (click)="openForm()">
+        <div class="icon education-icon">
+          <img src="assets/education.png" alt="Education Support" />
+        </div>
+        <h3>EDUCATION SUPPORT</h3>
+      </div>
+      
+      <div class="option-card">
+        <div class="icon ngo-icon">
+          <img src="assets/csr.png" alt="NGO" />
+        </div>
+        <h3>NGO</h3>
+      </div>
+      
+      <div class="option-card">
+        <div class="icon medical-icon">
+          <img src="assets/medical.png" alt="Medical Support" />
+        </div>
+        <h3>MEDICAL SUPPORT</h3>
+      </div>
+      
+      <div class="option-card">
+        <div class="icon laptop-icon">
+          <img src="assets/laptop.png" alt="Laptop Request" />
+        </div>
+        <h3>LAPTOP REQUEST</h3>
+      </div>
+      
+      <div class="option-card">
+        <div class="icon csr-icon">
+          <img src="assets/csr.png" alt="CSR & Claims" />
+        </div>
+        <h3>CSR & CLAIMS</h3>
+      </div>
     </div>
+    
+    <app-education-form *ngIf="showForm" (formClosed)="closeForm()"></app-education-form>
   </div>
 </div>
 
