@@ -1,11 +1,22 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EducationFormComponent } from '../education-form/education-form.component';
+import { MedicalFormComponent } from '../medical-form/medical-form.component';
+import { NgoFormComponent } from '../ngo-form/ngo-form.component';
+import { LaptopFormComponent } from '../laptop-form/laptop-form.component';
+import { CsrFormComponent } from '../csr-form/csr-form.component';
 
 @Component({
   selector: 'app-form-type-overlay',
   standalone: true,
-  imports: [CommonModule, EducationFormComponent],
+  imports: [
+    CommonModule, 
+    EducationFormComponent, 
+    MedicalFormComponent,
+    NgoFormComponent,
+    LaptopFormComponent,
+    CsrFormComponent
+  ],
   templateUrl: './form-type-overlay.component.html',
   styleUrls: ['./form-type-overlay.component.scss']
 })
@@ -16,14 +27,94 @@ export class FormTypeOverlayComponent {
     this.closed.emit();
   }
 
-  showForm = false;
+  // Form visibility states
+  showEducationForm = false;
+  showMedicalForm = false;
+  showNgoForm = false;
+  showLaptopForm = false;
+  showCsrForm = false;
 
-  openForm() {
-    this.showForm = true;
+  // Current active form
+  currentForm: string = '';
+
+  // Form options for dropdown
+  formOptions = [
+    { id: 'scholarship', name: 'Scholarship Form', component: 'education' },
+    { id: 'ngo', name: 'NGO Form', component: 'ngo' },
+    { id: 'medical', name: 'Medical Assistance Form', component: 'medical' },
+    { id: 'laptop', name: 'Laptop Form', component: 'laptop' },
+    { id: 'csr', name: 'CSR Claims Form', component: 'csr' }
+  ];
+
+  openForm(formType: string) {
+    // Close all forms first
+    this.closeAllForms();
+    
+    // Open the selected form
+    switch (formType) {
+      case 'education':
+        this.showEducationForm = true;
+        this.currentForm = 'scholarship';
+        break;
+      case 'medical':
+        this.showMedicalForm = true;
+        this.currentForm = 'medical';
+        break;
+      case 'ngo':
+        this.showNgoForm = true;
+        this.currentForm = 'ngo';
+        break;
+      case 'laptop':
+        this.showLaptopForm = true;
+        this.currentForm = 'laptop';
+        break;
+      case 'csr':
+        this.showCsrForm = true;
+        this.currentForm = 'csr';
+        break;
+    }
   }
 
-  closeForm() {
-    this.showForm = false;
+  closeAllForms() {
+    this.showEducationForm = false;
+    this.showMedicalForm = false;
+    this.showNgoForm = false;
+    this.showLaptopForm = false;
+    this.showCsrForm = false;
+  }
+
+  // Individual form close methods
+  closeEducationForm() {
+    this.showEducationForm = false;
+    this.currentForm = '';
+  }
+
+  closeMedicalForm() {
+    this.showMedicalForm = false;
+    this.currentForm = '';
+  }
+
+  closeNgoForm() {
+    this.showNgoForm = false;
+    this.currentForm = '';
+  }
+
+  closeLaptopForm() {
+    this.showLaptopForm = false;
+    this.currentForm = '';
+  }
+
+  closeCsrForm() {
+    this.showCsrForm = false;
+    this.currentForm = '';
+  }
+
+  // Handle form navigation from dropdown
+  onFormChanged(formId: string) {
+    const formOption = this.formOptions.find(option => option.id === formId);
+    if (formOption) {
+      this.openForm(formOption.component);
+    }
   }
 }
 

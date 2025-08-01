@@ -45,3 +45,34 @@
   </div>
 </div>
 
+<!-- Form Components -->
+<app-education-form 
+  *ngIf="showEducationForm" 
+  (formClosed)="closeEducationForm()"
+  (formChanged)="onFormChanged($event)">
+</app-education-form>
+
+<app-ngo-form 
+  *ngIf="showNgoForm" 
+  (formClosed)="closeNgoForm()"
+  (formChanged)="onFormChanged($event)">
+</app-ngo-form>
+
+<app-medical-form 
+  *ngIf="showMedicalForm" 
+  (formClosed)="closeMedicalForm()"
+  (formChanged)="onFormChanged($event)">
+</app-medical-form>
+
+<app-laptop-form 
+  *ngIf="showLaptopForm" 
+  (formClosed)="closeLaptopForm()"
+  (formChanged)="onFormChanged($event)">
+</app-laptop-form>
+
+<app-csr-form 
+  *ngIf="showCsrForm" 
+  (formClosed)="closeCsrForm()"
+  (formChanged)="onFormChanged($event)">
+</app-csr-form>
+

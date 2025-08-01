@@ -15,22 +15,22 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-education-form',
+  selector: 'app-laptop-form',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './education-form.component.html',
-  styleUrls: ['./education-form.component.scss'],
+  templateUrl: './laptop-form.component.html',
+  styleUrls: ['./laptop-form.component.scss'],
 })
-export class EducationFormComponent {
+export class LaptopFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
 
-  scholarshipForm: FormGroup;
+  laptopForm: FormGroup;
   charCount = 0;
   showErrorPopup = false;
   errorMessage = '';
   showDropdown = false;
-  currentForm = 'Scholarship Form';
+  currentForm = 'Laptop Form';
 
   formOptions = [
     { id: 'scholarship', name: 'Scholarship Form' },
@@ -41,22 +41,15 @@ export class EducationFormComponent {
   ];
 
   constructor(private fb: FormBuilder, private eRef: ElementRef) {
-    this.scholarshipForm = this.fb.group({
+    this.laptopForm = this.fb.group({
       beneficiaryName: ['', Validators.required],
-      whatsappNumber: ['', Validators.required],
-      institutionName: ['', Validators.required],
-      institutionLocation: ['', Validators.required],
-      tuitionFees: ['', Validators.required],
-      otherFees: ['', Validators.required],
-      semester: ['', Validators.required],
+      beneficiaryMobileNumber: ['', Validators.required],
+      accountNameForDD: ['', Validators.required],
       justification: ['', Validators.required],
-      bankAccountName: ['', Validators.required],
       requestLetter: [null, Validators.required],
-      idCard: [null, Validators.required],
-      aadharCard: [null, Validators.required],
-      rationCard: [null, Validators.required],
-      bonafideCertificate: [null, Validators.required],
-      deathCertificate: [null],
+      schoolIdCard: [null, Validators.required],
+      parentsAadharCard: [null, Validators.required],
+      otherDocuments: [null],
       declaration: [false, Validators.requiredTrue]
     });
   }
@@ -85,7 +78,7 @@ export class EducationFormComponent {
   onFileChange(event: any, field: string) {
     const file = event.target.files[0];
     if (file) {
-      this.scholarshipForm.patchValue({ [field]: file });
+      this.laptopForm.patchValue({ [field]: file });
       const fileNameSpan = event.target.parentElement.querySelector('.file-name');
       if (fileNameSpan) {
         fileNameSpan.textContent = file.name;
@@ -102,16 +95,15 @@ export class EducationFormComponent {
   }
 
   onSubmit() {
-    if (this.scholarshipForm.valid) {
+    if (this.laptopForm.valid) {
       const requiredFields = [
-        'beneficiaryName', 'whatsappNumber', 'institutionName', 
-        'institutionLocation', 'tuitionFees', 'otherFees', 'semester',
-        'justification', 'bankAccountName', 'requestLetter', 'idCard',
-        'aadharCard', 'rationCard', 'bonafideCertificate', 'declaration'
+        'beneficiaryName', 'beneficiaryMobileNumber', 'accountNameForDD',
+        'justification', 'requestLetter', 'schoolIdCard', 'parentsAadharCard',
+        'declaration'
       ];
 
       const missingFields = requiredFields.filter(field => {
-        const control = this.scholarshipForm.get(field);
+        const control = this.laptopForm.get(field);
         return !control?.value || (control.value === '' && control.hasError('required'));
       });
 
@@ -120,12 +112,12 @@ export class EducationFormComponent {
         return;
       }
 
-      if (!this.scholarshipForm.get('declaration')?.value) {
+      if (!this.laptopForm.get('declaration')?.value) {
         this.showError('Please accept the declaration to proceed.');
         return;
       }
 
-      alert('Scholarship form submitted successfully!');
+      alert('Laptop request form submitted successfully!');
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');
@@ -135,4 +127,4 @@ export class EducationFormComponent {
   onCancel() {
     this.formClosed.emit();
   }
-}
+} 
