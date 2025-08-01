@@ -15,22 +15,22 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-education-form',
+  selector: 'app-csr-form',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './education-form.component.html',
-  styleUrls: ['./education-form.component.scss'],
+  templateUrl: './csr-form.component.html',
+  styleUrls: ['./csr-form.component.scss'],
 })
-export class EducationFormComponent {
+export class CsrFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
 
-  scholarshipForm: FormGroup;
+  csrForm: FormGroup;
   charCount = 0;
   showErrorPopup = false;
   errorMessage = '';
   showDropdown = false;
-  currentForm = 'Scholarship Form';
+  currentForm = 'CSR Claims Form';
 
   formOptions = [
     { id: 'scholarship', name: 'Scholarship Form' },
@@ -41,22 +41,12 @@ export class EducationFormComponent {
   ];
 
   constructor(private fb: FormBuilder, private eRef: ElementRef) {
-    this.scholarshipForm = this.fb.group({
-      beneficiaryName: ['', Validators.required],
-      whatsappNumber: ['', Validators.required],
-      institutionName: ['', Validators.required],
-      institutionLocation: ['', Validators.required],
-      tuitionFees: ['', Validators.required],
-      otherFees: ['', Validators.required],
-      semester: ['', Validators.required],
+    this.csrForm = this.fb.group({
+      eventName: ['', Validators.required],
+      claimAmount: ['', Validators.required],
+      accountNameForDD: ['', Validators.required],
       justification: ['', Validators.required],
-      bankAccountName: ['', Validators.required],
-      requestLetter: [null, Validators.required],
-      idCard: [null, Validators.required],
-      aadharCard: [null, Validators.required],
-      rationCard: [null, Validators.required],
-      bonafideCertificate: [null, Validators.required],
-      deathCertificate: [null],
+      billsAndInvoices: [null],
       declaration: [false, Validators.requiredTrue]
     });
   }
@@ -85,7 +75,7 @@ export class EducationFormComponent {
   onFileChange(event: any, field: string) {
     const file = event.target.files[0];
     if (file) {
-      this.scholarshipForm.patchValue({ [field]: file });
+      this.csrForm.patchValue({ [field]: file });
       const fileNameSpan = event.target.parentElement.querySelector('.file-name');
       if (fileNameSpan) {
         fileNameSpan.textContent = file.name;
@@ -102,37 +92,34 @@ export class EducationFormComponent {
   }
 
   onSubmit() {
-    if (this.scholarshipForm.valid) {
+    if (this.csrForm.valid) {
       const requiredFields = [
-        'beneficiaryName', 'whatsappNumber', 'institutionName', 
-        'institutionLocation', 'tuitionFees', 'otherFees', 'semester',
-        'justification', 'bankAccountName', 'requestLetter', 'idCard',
-        'aadharCard', 'rationCard', 'bonafideCertificate', 'declaration'
+        'eventName', 'claimAmount', 'accountNameForDD', 'justification', 'declaration'
       ];
 
       const missingFields = requiredFields.filter(field => {
-        const control = this.scholarshipForm.get(field);
+        const control = this.csrForm.get(field);
         return !control?.value || (control.value === '' && control.hasError('required'));
       });
 
       if (missingFields.length > 0) {
-        this.showError('Please fill all required fields and upload all required documents.');
+        this.showError('Please fill all required fields.');
         return;
       }
 
-      if (!this.scholarshipForm.get('declaration')?.value) {
+      if (!this.csrForm.get('declaration')?.value) {
         this.showError('Please accept the declaration to proceed.');
         return;
       }
 
-      alert('Scholarship form submitted successfully!');
+      alert('CSR Claims form submitted successfully!');
       this.formClosed.emit();
     } else {
-      this.showError('Please fill all required fields and upload all required documents.');
+      this.showError('Please fill all required fields.');
     }
   }
 
   onCancel() {
     this.formClosed.emit();
   }
-}
+} 

@@ -23,33 +23,36 @@ import { CommonModule } from '@angular/common';
 })
 export class MedicalFormComponent {
   @Output() formClosed = new EventEmitter<void>();
+  @Output() formChanged = new EventEmitter<string>();
 
   medicalForm: FormGroup;
   charCount = 0;
-  selectedType: 'Individual' | 'NGO' = 'Individual';
+  showErrorPopup = false;
+  errorMessage = '';
+  showDropdown = false;
+  currentForm = 'Medical Assistance Form';
+
+  formOptions = [
+    { id: 'scholarship', name: 'Scholarship Form' },
+    { id: 'ngo', name: 'NGO Form' },
+    { id: 'medical', name: 'Medical Assistance Form' },
+    { id: 'laptop', name: 'Laptop Form' },
+    { id: 'csr', name: 'CSR Claims Form' }
+  ];
 
   constructor(private fb: FormBuilder, private eRef: ElementRef) {
     this.medicalForm = this.fb.group({
-      type: ['Individual', Validators.required],
-      patientName: [''],
-      mobile: [''],
-      hospitalName: [''],
-      hospitalLocation: [''],
-      accountName: [''],
-      amount: [''],
-      diagnosis: [''],
-      treatment: [''],
-      prescription: [null],
-      medicalReport: [null],
-      idCard: [null],
-      aadhar: [null],
-      dischargeSummary: [null],
-      declaration: [false],
-      // NGO specific fields
-      ngoName: [''],
-      ngoRegNo: [''],
-      ngoContact: [''],
-      ngoAddress: ['']
+      beneficiaryName: ['', Validators.required],
+      whatsappNumber: ['', Validators.required],
+      purposeOfMedicalAssistance: ['', Validators.required],
+      amountRequested: ['', Validators.required],
+      bankAccountName: ['', Validators.required],
+      justification: ['', Validators.required],
+      requestLetter: [null, Validators.required],
+      aadharCard: [null, Validators.required],
+      rationCard: [null, Validators.required],
+      medicalBills: [null, Validators.required],
+      declaration: [false, Validators.requiredTrue]
     });
   }
 
@@ -60,9 +63,13 @@ export class MedicalFormComponent {
     }
   }
 
-  setType(type: 'Individual' | 'NGO') {
-    this.selectedType = type;
-    this.medicalForm.patchValue({ type });
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  selectForm(formId: string) {
+    this.showDropdown = false;
+    this.formChanged.emit(formId);
   }
 
   onTextChange(event: Event) {
@@ -74,12 +81,49 @@ export class MedicalFormComponent {
     const file = event.target.files[0];
     if (file) {
       this.medicalForm.patchValue({ [field]: file });
+      const fileNameSpan = event.target.parentElement.querySelector('.file-name');
+      if (fileNameSpan) {
+        fileNameSpan.textContent = file.name;
+      }
     }
   }
 
+  showError(message: string) {
+    this.errorMessage = message;
+    this.showErrorPopup = true;
+    setTimeout(() => {
+      this.showErrorPopup = false;
+    }, 3000);
+  }
+
   onSubmit() {
-    alert(`${this.selectedType} medical form submitted!`);
-    this.formClosed.emit();
+    if (this.medicalForm.valid) {
+      const requiredFields = [
+        'beneficiaryName', 'whatsappNumber', 'purposeOfMedicalAssistance',
+        'amountRequested', 'bankAccountName', 'justification', 'requestLetter',
+        'aadharCard', 'rationCard', 'medicalBills', 'declaration'
+      ];
+
+      const missingFields = requiredFields.filter(field => {
+        const control = this.medicalForm.get(field);
+        return !control?.value || (control.value === '' && control.hasError('required'));
+      });
+
+      if (missingFields.length > 0) {
+        this.showError('Please fill all required fields and upload all required documents.');
+        return;
+      }
+
+      if (!this.medicalForm.get('declaration')?.value) {
+        this.showError('Please accept the declaration to proceed.');
+        return;
+      }
+
+      alert('Medical Assistance form submitted successfully!');
+      this.formClosed.emit();
+    } else {
+      this.showError('Please fill all required fields and upload all required documents.');
+    }
   }
 
   onCancel() {

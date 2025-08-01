@@ -15,22 +15,22 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-education-form',
+  selector: 'app-ngo-form',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './education-form.component.html',
-  styleUrls: ['./education-form.component.scss'],
+  templateUrl: './ngo-form.component.html',
+  styleUrls: ['./ngo-form.component.scss'],
 })
-export class EducationFormComponent {
+export class NgoFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
 
-  scholarshipForm: FormGroup;
+  ngoForm: FormGroup;
   charCount = 0;
   showErrorPopup = false;
   errorMessage = '';
   showDropdown = false;
-  currentForm = 'Scholarship Form';
+  currentForm = 'NGO Form';
 
   formOptions = [
     { id: 'scholarship', name: 'Scholarship Form' },
@@ -41,22 +41,19 @@ export class EducationFormComponent {
   ];
 
   constructor(private fb: FormBuilder, private eRef: ElementRef) {
-    this.scholarshipForm = this.fb.group({
-      beneficiaryName: ['', Validators.required],
-      whatsappNumber: ['', Validators.required],
-      institutionName: ['', Validators.required],
-      institutionLocation: ['', Validators.required],
-      tuitionFees: ['', Validators.required],
-      otherFees: ['', Validators.required],
-      semester: ['', Validators.required],
+    this.ngoForm = this.fb.group({
+      ngoName: ['', Validators.required],
+      ngoSpocName: ['', Validators.required],
+      spocWhatsappNumber: ['', Validators.required],
+      ngoLocation: ['', Validators.required],
+      numberOfInmates: ['', Validators.required],
+      purposeOfAssistance: ['', Validators.required],
+      amountRequested: ['', Validators.required],
+      accountNameForDD: ['', Validators.required],
       justification: ['', Validators.required],
-      bankAccountName: ['', Validators.required],
+      ngoProfile: [null, Validators.required],
       requestLetter: [null, Validators.required],
-      idCard: [null, Validators.required],
-      aadharCard: [null, Validators.required],
-      rationCard: [null, Validators.required],
-      bonafideCertificate: [null, Validators.required],
-      deathCertificate: [null],
+      registrationCertificate: [null, Validators.required],
       declaration: [false, Validators.requiredTrue]
     });
   }
@@ -85,7 +82,7 @@ export class EducationFormComponent {
   onFileChange(event: any, field: string) {
     const file = event.target.files[0];
     if (file) {
-      this.scholarshipForm.patchValue({ [field]: file });
+      this.ngoForm.patchValue({ [field]: file });
       const fileNameSpan = event.target.parentElement.querySelector('.file-name');
       if (fileNameSpan) {
         fileNameSpan.textContent = file.name;
@@ -102,16 +99,16 @@ export class EducationFormComponent {
   }
 
   onSubmit() {
-    if (this.scholarshipForm.valid) {
+    if (this.ngoForm.valid) {
       const requiredFields = [
-        'beneficiaryName', 'whatsappNumber', 'institutionName', 
-        'institutionLocation', 'tuitionFees', 'otherFees', 'semester',
-        'justification', 'bankAccountName', 'requestLetter', 'idCard',
-        'aadharCard', 'rationCard', 'bonafideCertificate', 'declaration'
+        'ngoName', 'ngoSpocName', 'spocWhatsappNumber', 'ngoLocation',
+        'numberOfInmates', 'purposeOfAssistance', 'amountRequested',
+        'accountNameForDD', 'justification', 'ngoProfile', 'requestLetter',
+        'registrationCertificate', 'declaration'
       ];
 
       const missingFields = requiredFields.filter(field => {
-        const control = this.scholarshipForm.get(field);
+        const control = this.ngoForm.get(field);
         return !control?.value || (control.value === '' && control.hasError('required'));
       });
 
@@ -120,12 +117,12 @@ export class EducationFormComponent {
         return;
       }
 
-      if (!this.scholarshipForm.get('declaration')?.value) {
+      if (!this.ngoForm.get('declaration')?.value) {
         this.showError('Please accept the declaration to proceed.');
         return;
       }
 
-      alert('Scholarship form submitted successfully!');
+      alert('NGO form submitted successfully!');
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');
@@ -135,4 +132,4 @@ export class EducationFormComponent {
   onCancel() {
     this.formClosed.emit();
   }
-}
+} 
