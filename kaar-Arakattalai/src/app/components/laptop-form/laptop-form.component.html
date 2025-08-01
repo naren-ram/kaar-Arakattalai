@@ -11,7 +11,7 @@
     <div class="header">
       <div class="left">
         <div class="form-dropdown">
-          <h2 (click)="toggleDropdown()" class="dropdown-trigger">
+          <h2 (click)="toggleDropdown($event)" class="dropdown-trigger">
             {{ currentForm }}
             <span class="dropdown-arrow">▼</span>
           </h2>
@@ -19,7 +19,7 @@
             <div 
               class="dropdown-item" 
               *ngFor="let form of formOptions" 
-              (click)="selectForm(form.id)"
+              (click)="selectForm(form.id, $event)"
             >
               {{ form.name }}
             </div>

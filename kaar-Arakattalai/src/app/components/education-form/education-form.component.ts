@@ -68,11 +68,13 @@ export class EducationFormComponent {
     }
   }
 
-  toggleDropdown() {
+  toggleDropdown(event: Event) {
+    event.stopPropagation();
     this.showDropdown = !this.showDropdown;
   }
 
-  selectForm(formId: string) {
+  selectForm(formId: string, event: Event) {
+    event.stopPropagation();
     this.showDropdown = false;
     this.formChanged.emit(formId);
   }

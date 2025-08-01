@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ElementRef, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EducationFormComponent } from '../education-form/education-form.component';
 import { MedicalFormComponent } from '../medical-form/medical-form.component';
@@ -20,8 +20,27 @@ import { CsrFormComponent } from '../csr-form/csr-form.component';
   templateUrl: './form-type-overlay.component.html',
   styleUrls: ['./form-type-overlay.component.scss']
 })
-export class FormTypeOverlayComponent {
+export class FormTypeOverlayComponent implements OnInit {
   @Output() closed = new EventEmitter<void>();
+
+  private ignoreNextClick = false;
+
+  constructor(private eRef: ElementRef) {}
+
+  ngOnInit() {
+    this.ignoreNextClick = true;
+    setTimeout(() => {
+      this.ignoreNextClick = false;
+    }, 0);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onOutsideClick(event: Event) {
+    if (this.ignoreNextClick) return;
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.closeOverlay();
+    }
+  }
 
   closeOverlay() {
     this.closed.emit();
