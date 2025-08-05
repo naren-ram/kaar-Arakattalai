@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { UserProfileComponent } from './user-profile.component';
+import { UserProfileComponent } from './user-profile.component'; // <-- Corrected line
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
@@ -8,9 +7,8 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserProfileComponent]
-    })
-    .compileComponents();
+      imports: [UserProfileComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserProfileComponent);
     component = fixture.componentInstance;
@@ -19,5 +17,10 @@ describe('UserProfileComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render userprofile wrapper', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.userprofile-wrapper')).toBeTruthy();
   });
 });
