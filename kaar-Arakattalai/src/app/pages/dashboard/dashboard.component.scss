@@ -1,9 +1,21 @@
 .dashboard-content {
-  margin-left: 20px ;
+  margin-left: 20px;
+  margin-right: 20px;
   justify-items: auto;
   display: flex;
-  gap: 10px;
+  gap: 30px;
   margin-top: 32px;
+}
+
+.left-section {
+  flex: 1;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 350px;
 }
 
 

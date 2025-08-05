@@ -1,19 +1,17 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MenubarComponent } from '../../components/menubar/menubar.component';
-import { PiChartComponent } from '../../components/pi-chart/pi-chart.component';
-import { ContributionStatusComponent } from '../../components/contribution-status/contribution-status.component';
-import { AreachartComponent } from '../../components/areachart/areachart.component';
-import { UpdateContributionComponent } from '../../components/update-contribution/update-contribution.component';
+import { ReferralTableComponent } from '../../components/referral-table/referral-table.component';
+import { SummaryConsComponent } from '../../components/summary-cons/summary-cons.component';
 
 @Component({
   selector: 'dashboard',
   standalone: true,
   imports: [
     MenubarComponent,
-    PiChartComponent,
-    ContributionStatusComponent,
-    AreachartComponent,
-    UpdateContributionComponent
+    SummaryConsComponent,
+    ReferralTableComponent
+    
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
