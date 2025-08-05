@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MenubarComponent } from '../../components/menubar/menubar.component';
 import { ReferralTableComponent } from '../../components/referral-table/referral-table.component';
 import { SummaryConsComponent } from '../../components/summary-cons/summary-cons.component';
+import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'dashboard',
@@ -10,8 +11,8 @@ import { SummaryConsComponent } from '../../components/summary-cons/summary-cons
   imports: [
     MenubarComponent,
     SummaryConsComponent,
-    ReferralTableComponent
-    
+    ReferralTableComponent,
+    HeaderComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
