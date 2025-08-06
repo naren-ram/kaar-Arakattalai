@@ -48,6 +48,10 @@
         <div class="form-group">
           <label>Account Name for DD *</label>
           <input formControlName="accountNameForDD" placeholder="Enter Full DD Name" />
+        </div> 
+        <div class="form-group">
+          <label>Purpose of Medical Assistance required</label>
+          <input formControlName="purposeOfMedicalAssistance" placeholder="Enter Full DD Name" />
         </div>
 
         <!-- Employee's Justification -->
@@ -94,7 +98,7 @@
 
         <div class="form-group full">
           <div class="file-input-wrapper">
-            <label>Parent's Aadhar card *</label>
+            <label>Beneficiary's Aadhar card *</label>
             <input type="file" (change)="onFileChange($event, 'parentsAadharCard')" />
             <div class="file-display-content">
               <span class="file-name"></span>

@@ -6,17 +6,68 @@
   padding: 16px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #e5e7eb;
-  
 }
 
 .left-text {
-    font-family: 'DM Sans' !important; /* Force DM Sans only */
+    font-family: 'DM Sans' !important;
     font-size: 16px;
-    font-weight: 600; /* Fixed: changed from "Medium" to 500 */
+    font-weight: 600;
     color: #515965;
-    flex: 1 1 auto;
-    min-width: 150px;
+    white-space: nowrap;
+}
 
+.center-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.search-container {
+    position: relative;
+    width: 250px;
+    margin-right: 12px;
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 40px 8px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: 'DM Sans' !important;
+    font-size: 14px;
+    background-color: #f9fafb;
+    box-sizing: border-box;
+    
+    &:focus {
+        outline: none;
+        border-color: #EE4961;
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(238, 73, 97, 0.1);
+    }
+    
+    &::placeholder {
+        color: #9ca3af;
+    }
+}
+
+.search-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #6b7280;
+    border-radius: 4px;
+    
+    &:hover {
+        background-color: #f3f4f6;
+        color: #EE4961;
+    }
 }
 
 .contribution-value {
@@ -36,4 +87,9 @@
     flex-shrink: 0;
     margin-top: 0;
     height: 40px; // Set the height of the button
+    width: 162px; // Set the width of the button
+    
+    &:hover {
+        background-color: #d63754;
+    }
 }
