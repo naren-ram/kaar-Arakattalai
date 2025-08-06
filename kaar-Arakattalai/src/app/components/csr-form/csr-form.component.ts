@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class CsrFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
+  @Output() formSubmitted = new EventEmitter<void>();
 
   csrForm: FormGroup;
   charCount = 0;
@@ -115,6 +116,7 @@ export class CsrFormComponent {
       }
 
       alert('CSR Claims form submitted successfully!');
+      this.formSubmitted.emit();
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields.');

@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class EducationFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
+  @Output() formSubmitted = new EventEmitter<void>();
 
   scholarshipForm: FormGroup;
   charCount = 0;
@@ -128,6 +129,7 @@ export class EducationFormComponent {
       }
 
       alert('Scholarship form submitted successfully!');
+      this.formSubmitted.emit();
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');

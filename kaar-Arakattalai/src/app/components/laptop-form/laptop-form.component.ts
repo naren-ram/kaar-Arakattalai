@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class LaptopFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
+  @Output() formSubmitted = new EventEmitter<void>();
 
   laptopForm: FormGroup;
   charCount = 0;
@@ -120,6 +121,7 @@ export class LaptopFormComponent {
       }
 
       alert('Laptop request form submitted successfully!');
+      this.formSubmitted.emit();
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');
