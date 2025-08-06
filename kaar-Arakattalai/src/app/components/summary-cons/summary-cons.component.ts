@@ -22,7 +22,7 @@ import { RequestService } from '../../services/requests.service';
   `,
   styles: [`
     .summary-cons-wrapper {
-      width: 40%;
+      width: 100%;
       padding: 1rem 2rem;
       box-sizing: border-box;
     }

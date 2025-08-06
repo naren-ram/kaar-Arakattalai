@@ -24,7 +24,6 @@ import { CommonModule } from '@angular/common';
 export class MedicalFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
-  @Output() formSubmitted = new EventEmitter<void>();
 
   medicalForm: FormGroup;
   charCount = 0;
@@ -41,7 +40,7 @@ export class MedicalFormComponent {
     { id: 'csr', name: 'CSR Claims Form' }
   ];
 
-  constructor(private fb: FormBuilder, private eRef: ElementRef, private requestService: RequestService) {
+  constructor(private fb: FormBuilder, private eRef: ElementRef) {
     this.medicalForm = this.fb.group({
       beneficiaryName: ['', Validators.required],
       whatsappNumber: ['', Validators.required],
@@ -72,10 +71,7 @@ export class MedicalFormComponent {
   selectForm(formId: string, event: Event) {
     event.stopPropagation();
     this.showDropdown = false;
-    this.formClosed.emit();
-    setTimeout(() => {
-      this.formChanged.emit(formId);
-    }, 0);
+    this.formChanged.emit(formId);
   }
 
   onTextChange(event: Event) {
@@ -125,17 +121,8 @@ export class MedicalFormComponent {
         return;
       }
 
-      // Send raw data to backend
-      this.requestService.submitMedicalForm(this.medicalForm.value).subscribe({
-        next: () => {
-          alert('Medical Assistance form submitted successfully!');
-          this.formSubmitted.emit();
-          this.formClosed.emit();
-        },
-        error: () => {
-          this.showError('Failed to submit form. Please try again.');
-        }
-      });
+      alert('Medical Assistance form submitted successfully!');
+      this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');
     }

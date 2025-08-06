@@ -135,10 +135,11 @@ import { HttpClientModule } from '@angular/common/http';
   `,
   styles: [`
     .profile-container {
-      max-width: 400px;
-      max-height: 100vh !important;
-      
-      padding: 1rem;
+      max-width: 55%;
+      max-height: 2500vh !important;
+      margin-left: 20px;
+      margin-top: 10px;
+      padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       text-align: center;

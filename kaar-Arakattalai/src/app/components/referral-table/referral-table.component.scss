@@ -1,4 +1,9 @@
 /* === RESET AG GRID BORDERS AND OUTLINES === */
+
+.body{
+  margin-top: 0;
+  padding: 0;
+}
 .custom-ag-grid .ag-cell {
   display: flex;
   align-items: center;
