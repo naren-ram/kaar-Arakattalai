@@ -71,7 +71,10 @@ export class MedicalFormComponent {
   selectForm(formId: string, event: Event) {
     event.stopPropagation();
     this.showDropdown = false;
-    this.formChanged.emit(formId);
+    this.formClosed.emit();
+    setTimeout(() => {
+      this.formChanged.emit(formId);
+    }, 0);
   }
 
   onTextChange(event: Event) {
