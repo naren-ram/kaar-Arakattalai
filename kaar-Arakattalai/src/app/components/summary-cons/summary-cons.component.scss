@@ -11,9 +11,9 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-// 👇 Add these styles for hoverable summary boxes
 .summary-container {
   display: flex;
   flex-wrap: wrap;
@@ -21,6 +21,7 @@
   align-items: flex-start;
 }
 
+// 🟨 This is where the hover animation happens
 .summary-box {
   flex: 0 1 130px;
   display: flex;
@@ -35,13 +36,14 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   min-width: 120px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
-}
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-.summary-box:hover {
-  background-color: #f1f1f1;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  // 👇 Hover effect: Slightly lift the box
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    background-color: #f3f3f3;
+  }
 }
 
 .label {
