@@ -45,10 +45,18 @@ import { RequestService } from '../../services/requests.service';
       border-radius: 6px;
       font-size: 13px;
       font-weight: 500;
-      border-left: 6px solid; /* Only left side border */
+      border-left: 6px solid;
       background-color: #fff;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
       min-width: 120px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .summary-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      background-color: #f3f3f3;
     }
 
     .label {
