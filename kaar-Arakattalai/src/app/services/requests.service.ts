@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RequestService {
+  submitMedicalForm(data: any): Observable<any> {
+    // Send raw data to backend
+    return this.http.post('http://localhost:3000/api/raw-data', data);
+  }
   constructor(private http: HttpClient) {}
 
   getRequests(): Observable<any[]> {

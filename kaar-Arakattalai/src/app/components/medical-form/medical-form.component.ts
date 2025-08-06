@@ -41,7 +41,7 @@ export class MedicalFormComponent {
     { id: 'csr', name: 'CSR Claims Form' }
   ];
 
-  constructor(private fb: FormBuilder, private eRef: ElementRef) {
+  constructor(private fb: FormBuilder, private eRef: ElementRef, private requestService: RequestService) {
     this.medicalForm = this.fb.group({
       beneficiaryName: ['', Validators.required],
       whatsappNumber: ['', Validators.required],
@@ -125,9 +125,17 @@ export class MedicalFormComponent {
         return;
       }
 
-      alert('Medical Assistance form submitted successfully!');
-      this.formSubmitted.emit();
-      this.formClosed.emit();
+      // Send raw data to backend
+      this.requestService.submitMedicalForm(this.medicalForm.value).subscribe({
+        next: () => {
+          alert('Medical Assistance form submitted successfully!');
+          this.formSubmitted.emit();
+          this.formClosed.emit();
+        },
+        error: () => {
+          this.showError('Failed to submit form. Please try again.');
+        }
+      });
     } else {
       this.showError('Please fill all required fields and upload all required documents.');
     }
