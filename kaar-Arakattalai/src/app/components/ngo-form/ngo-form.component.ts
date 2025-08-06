@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class NgoFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
+  @Output() formSubmitted = new EventEmitter<void>();
 
   ngoForm: FormGroup;
   charCount = 0;
@@ -125,6 +126,7 @@ export class NgoFormComponent {
       }
 
       alert('NGO form submitted successfully!');
+      this.formSubmitted.emit();
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');

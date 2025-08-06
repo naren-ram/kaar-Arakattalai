@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class MedicalFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() formChanged = new EventEmitter<string>();
+  @Output() formSubmitted = new EventEmitter<void>();
 
   medicalForm: FormGroup;
   charCount = 0;
@@ -122,6 +123,7 @@ export class MedicalFormComponent {
       }
 
       alert('Medical Assistance form submitted successfully!');
+      this.formSubmitted.emit();
       this.formClosed.emit();
     } else {
       this.showError('Please fill all required fields and upload all required documents.');

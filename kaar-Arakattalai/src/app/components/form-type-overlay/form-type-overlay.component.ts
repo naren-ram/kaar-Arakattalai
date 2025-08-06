@@ -135,6 +135,16 @@ export class FormTypeOverlayComponent implements OnInit {
       this.openForm(formOption.component);
     }
   }
+
+  toastMessage: string | null = null;
+
+  showToast(message: string) {
+    this.toastMessage = message;
+    setTimeout(() => {
+      this.toastMessage = null;
+      this.closeOverlay();
+    }, 2500);
+  }
 }
 
 
