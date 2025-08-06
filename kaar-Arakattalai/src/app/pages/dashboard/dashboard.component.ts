@@ -18,6 +18,4 @@ import { UserProfileComponent } from '../../components/user-profile/user-profile
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  status = 'Active';
-  annualContribution = 8000;
 }

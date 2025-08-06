@@ -22,23 +22,25 @@ import { RequestService } from '../../services/requests.service';
   `,
   styles: [`
     .summary-cons-wrapper {
-      width: 100%;
-      padding: 1rem 2rem;
+      width: auto;
+      padding: 0;
       box-sizing: border-box;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     .summary-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 1rem;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .summary-box {
       flex: 0 1 130px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: left;
       padding: 0.5rem 0.75rem;
       border-radius: 6px;
       font-size: 13px;

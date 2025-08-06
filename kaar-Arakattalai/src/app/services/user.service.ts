@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface UserProfile {
+  profilePicture: string;
   name: string;
   aid: number;
   designation: string;
@@ -11,7 +12,7 @@ export interface UserProfile {
   annualEligibleReferral: number;
   balanceEligibleReferral: number;
   myReferrals: number;
-  profilePicture: string;
+  
 }
 
 @Injectable({

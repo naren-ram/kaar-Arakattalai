@@ -1,11 +1,11 @@
 .summary-cons-wrapper {
-  display: flex;
-  justify-content: center;
+  display: left;
+  justify-content: left;
   padding: 1rem;
 }
 
 .summary-cons-card {
-  width: 100%;
+  width: 500px;
   max-width: 400px;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -15,9 +15,9 @@
 
 // 👇 Add these styles for hoverable summary boxes
 .summary-container {
-  display: flex;
+  display: left;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0rem;
   align-items: flex-start;
 }
 
@@ -51,4 +51,21 @@
 .count {
   font-weight: bold;
   padding-left: 0.5rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .summary-cons-card {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .summary-container {
+    gap: 0.5rem;
+  }
+  
+  .summary-box {
+    flex: 1 1 120px;
+    min-width: 100px;
+  }
 }

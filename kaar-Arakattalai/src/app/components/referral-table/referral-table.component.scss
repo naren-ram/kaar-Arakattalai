@@ -1,9 +1,10 @@
 /* === RESET AG GRID BORDERS AND OUTLINES === */
 
-.body{
+.body {
   margin-top: 0;
   padding: 0;
 }
+
 .custom-ag-grid .ag-cell {
   display: flex;
   align-items: center;
@@ -99,4 +100,23 @@
 .status-pill.unknown {
   background-color: rgba(113, 128, 150, 0.2);
   color: #718096;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  ag-grid-angular {
+    height: 400px !important;
+  }
+  
+  .status-pill {
+    font-size: 11px;
+    padding: 3px 8px;
+    width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  ag-grid-angular {
+    height: 300px !important;
+  }
 }

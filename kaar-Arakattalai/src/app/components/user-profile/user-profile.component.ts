@@ -120,25 +120,24 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, HttpClientModule],
   template: `
     <div class="profile-container" *ngIf="user">
-      <img class="profile-image" [src]="user.profilePicture" alt="Profile Picture" />
+      <img class="profile-image" [src]="user.profilePicture" alt="Profile Picture">
       <div class="info-grid">
         <div><strong>{{ user.name }}</strong><div>Name</div></div>
         <div><strong>{{ user.aid }}</strong><div>AID</div></div>
         <div><strong>{{ user.designation }}</strong><div>Designation</div></div>
         <div><strong>{{ user.manager }}</strong><div>Direct Manager</div></div>
-        <div><strong>{{ user.annualContribution }}</strong><div>Annual Contribution (For Current FY)</div></div>
-        <div><strong>{{ user.annualEligibleReferral }}</strong><div>Annual Eligible Referral Amount</div></div>
-        <div><strong>{{ user.balanceEligibleReferral }}</strong><div>Balance Eligible Referral Amount</div></div>
+        <div><strong>{{ user.annualContribution }}</strong><div>Annual Contribution <br>(For Current FY)</div></div>
+        <div><strong>{{ user.annualEligibleReferral }}</strong><div>Annual Eligible <br>Referral Amount</div></div>
+        <div><strong>{{ user.balanceEligibleReferral }}</strong><div>Balance Eligible <br>Referral Amount</div></div>
         <div><strong>{{ user.myReferrals }}</strong><div>My Referrals</div></div>
       </div>
     </div>
   `,
   styles: [`
     .profile-container {
-      max-width: 55%;
-      max-height: 2500vh !important;
-      margin-left: 20px;
-      margin-top: 10px;
+      width: 330px;
+      height: 100%;
+      margin: 0;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -146,17 +145,18 @@ import { HttpClientModule } from '@angular/common/http';
       background-color: #fff;
     }
     .profile-image {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem 1rem;
+      gap: 3rem 1rem;
       text-align: left;
+      margin-left: 0;
       div {
         strong {
           display: block;

@@ -1,5 +1,6 @@
 exports.getProfile = (req, res) => {
   const userData = {
+    profilePicture: "/assets/profile_picture.png",
     name: "Anbarasi",
     aid: 50,
     designation: "Professional",
@@ -7,8 +8,8 @@ exports.getProfile = (req, res) => {
     annualContribution: 100000,
     annualEligibleReferral: 200000,
     balanceEligibleReferral: 20000,
-    myReferrals: 0,
-    profilePicture: "/assets/profile_picture.png"
+    myReferrals: 0
+    
   };
   res.json(userData);
 };
