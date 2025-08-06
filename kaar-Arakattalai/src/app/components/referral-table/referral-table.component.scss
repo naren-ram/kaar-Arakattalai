@@ -1,7 +1,7 @@
 /* === RESET AG GRID BORDERS AND OUTLINES === */
-.custom-ag-grid .ag-cell{
-    display: flex;
-    align-items: center;
+.custom-ag-grid .ag-cell {
+  display: flex;
+  align-items: center;
 }
 
 .custom-ag-grid .ag-root-wrapper,
@@ -20,15 +20,15 @@
   box-shadow: none !important;
 }
 
-
-
-
-/* === Optional: Remove sidebar border === */
+/* Optional: Remove sidebar border */
 .custom-ag-grid {
   border-left: none !important;
+  margin: 20px;
+  border-radius: 8px;
+  /* height will be set dynamically */
 }
 
-/* === HEADER STYLING === */
+/* HEADER STYLING */
 .custom-ag-grid .ag-header {
   background-color: #F5F6F9 !important;
 }
@@ -41,17 +41,15 @@
   border: none !important;
 }
 
-/* === ROW STYLING === */
+/* ROW STYLING */
 .custom-ag-grid .ag-row:nth-child(odd) {
   background-color: #ffffff;
   color: #87868c;
-
 }
 
 .custom-ag-grid .ag-row:nth-child(even) {
   background-color: #ffffff;
   color: #87868c;
-  
 }
 
 .custom-ag-grid .ag-row:hover {
@@ -59,13 +57,12 @@
   cursor: pointer;
 }
 
-/* === Add only bottom border for rows === */
+/* Add only bottom border for rows */
 .custom-ag-grid .ag-row {
   border-bottom: 1px solid #e0e0e0 !important;
-  
 }
 
-/* === STATUS PILL STYLES === */
+/* STATUS PILL STYLES */
 .status-pill {
   display: inline-flex;
   align-items: center;

@@ -1,22 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { ColDef, ICellRendererParams, ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular';
+import {
+  ModuleRegistry,
+  ClientSideRowModelModule,
+  TextFilterModule,
+  NumberFilterModule,
+  DateFilterModule,
+  CustomFilterModule,
+  CellStyleModule,
+  ValidationModule,
+  ColDef,
+  ICellRendererParams
+} from 'ag-grid-community';
+
 import { RequestService } from '../../services/requests.service';
-import { ViewEncapsulation } from '@angular/core';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Use new Alpine theme
-import { SideBarDef } from 'ag-grid-community';
 
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 
-
-ModuleRegistry.registerModules([AllCommunityModule]);
+// Register all needed modules including SidebarModule
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  TextFilterModule,
+  NumberFilterModule,
+  DateFilterModule,
+  CustomFilterModule,
+  CellStyleModule,
+  ValidationModule
+]);
 
 @Component({
   selector: 'app-referral-table',
   standalone: true,
-  encapsulation: ViewEncapsulation.None,
   imports: [CommonModule, AgGridModule],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './referral-table.component.html',
   styleUrls: ['./referral-table.component.scss']
 })
@@ -24,7 +41,7 @@ export class ReferralTableComponent implements OnInit {
   rowData: any[] = [];
 
   columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID', flex: 1 ,cellClass: 'grey-cell'},
+    { field: 'id', headerName: 'ID', flex: 1, cellClass: 'grey-cell' },
     { field: 'beneficiaryName', headerName: 'Beneficiary Name', flex: 2, cellClass: 'grey-cell' },
     { field: 'referralType', headerName: 'Referral Type', flex: 2, cellClass: 'grey-cell' },
     {
@@ -39,11 +56,8 @@ export class ReferralTableComponent implements OnInit {
           Rejected: 'rejected',
           Pending: 'pending'
         }[status] || 'unknown';
-
-        // Return HTML string for colored pill
         return `<span class="status-pill ${statusClass}">${status}</span>`;
       },
-      // Important: let AG Grid treat returned string as HTML
       cellRendererParams: {
         suppressSanitizeHtml: true
       }
@@ -55,35 +69,60 @@ export class ReferralTableComponent implements OnInit {
     filter: true,
     resizable: true
   };
-  sideBarConfig: SideBarDef = {
-  toolPanels: [
-    {
-      id: 'columns',
-      labelDefault: 'Columns',
-      labelKey: 'columns', 
-      iconKey: 'columns',
-      toolPanel: 'agColumnsToolPanel',
-    },
-    {
-      id: 'filters',
-      labelDefault: 'Filters',
-      labelKey: 'filters', 
-      iconKey: 'filter',
-      toolPanel: 'agFiltersToolPanel',
-    }
-  ],
-  defaultToolPanel: 'columns'
-};
 
+  // Sidebar config to enable filter and columns tool panels
+  public sidebar = {
+    toolPanels: [
+      {
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
+      },
+      {
+        id: 'filters',
+        labelDefault: 'Filters',
+        labelKey: 'filters',
+        iconKey: 'filter',
+        toolPanel: 'agFiltersToolPanel',
+      }
+    ],
+    defaultToolPanel: 'filters'
+  };
 
-
-
+  gridApi: any;
+  gridColumnApi: any;
 
   constructor(private requestService: RequestService) {}
 
   ngOnInit(): void {
     this.requestService.getRequests().subscribe(data => {
-      this.rowData = data;
+      console.log('Received data:', data);
+    this.rowData = data;
+    this.setGridHeight();
     });
+  }
+
+  onGridReady(params: any) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    // Resize height based on rows count & row height (35 px)
+    this.setGridHeight();
+  }
+
+  setGridHeight() {
+    if (!this.gridApi) return;
+
+    const rowCount = this.rowData.length;
+    const headerHeight = 25; // approx header height in px
+    const rowHeight = 35;
+    const height = headerHeight + rowCount * rowHeight;
+
+    const gridDiv = document.querySelector('.custom-ag-grid') as HTMLElement;
+    if (gridDiv) {
+      gridDiv.style.height = height + 'px';
+    }
   }
 }
