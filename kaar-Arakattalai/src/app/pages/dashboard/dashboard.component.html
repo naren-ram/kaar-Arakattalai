@@ -1,19 +1,14 @@
+<app-header></app-header>
 <app-menubar></app-menubar>
 
-<div class="dashboard-layout">
-  <div class="left-panel">
-    <!-- Top -->
-    <app-contribution-status></app-contribution-status>
-
-    <!-- Bottom -->
-    <app-update-contribution></app-update-contribution>
+<div class="dashboard-content">
+  <div class="left-section">
+    <!-- Main dashboard content goes here -->
+    <app-user-profile></app-user-profile>   <!-- NEW -->
   </div>
-
-  <div class="center-panel">
-    <app-pi-chart></app-pi-chart>
+  
+  <div class="right-section">
+    <app-summary-cons></app-summary-cons>
+    <app-referral-table></app-referral-table>
   </div>
-</div>
-
-<div class="areachart-chart-wrapper">
-  <app-areachart></app-areachart>
 </div>
