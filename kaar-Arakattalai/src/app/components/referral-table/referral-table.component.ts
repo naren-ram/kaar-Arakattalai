@@ -11,7 +11,8 @@ import {
   CellStyleModule,
   ValidationModule,
   ColDef,
-  ICellRendererParams
+  ICellRendererParams,
+  GridOptions
 } from 'ag-grid-community';
 
 import { RequestService } from '../../services/requests.service';
@@ -69,8 +70,12 @@ export class ReferralTableComponent implements OnInit, OnChanges {
 
   defaultColDef: ColDef = {
     sortable: true,
-    filter: true,
+    filter: false,
     resizable: true
+  };
+
+  gridOptions: GridOptions = {
+    suppressMovableColumns: true
   };
 
   // Sidebar config to enable filter and columns tool panels

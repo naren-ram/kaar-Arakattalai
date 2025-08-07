@@ -146,8 +146,8 @@ import { HttpClientModule } from '@angular/common/http';
       background-color: #fff;
     }
     .profile-image {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 3rem;
