@@ -32,7 +32,7 @@
                 "input": "src/assets",
                 "output": "assets"
               }
-            ],
+            ],  
             "styles": [
               "src/styles.scss"
             ],

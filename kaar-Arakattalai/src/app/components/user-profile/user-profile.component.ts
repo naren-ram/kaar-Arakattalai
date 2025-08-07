@@ -140,7 +140,8 @@ import { HttpClientModule } from '@angular/common/http';
       margin: 0;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+      /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
       text-align: center;
       background-color: #fff;
     }
@@ -154,17 +155,20 @@ import { HttpClientModule } from '@angular/common/http';
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem 1rem;
+      gap: 3rem 5rem;
       text-align: left;
       margin-left: 0;
+    
       div {
         strong {
           display: block;
-          font-size: 16px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #272A47;
         }
         div {
           font-size: 12px;
-          color: #555;
+          color: #7D838B;
         }
       }
     }
