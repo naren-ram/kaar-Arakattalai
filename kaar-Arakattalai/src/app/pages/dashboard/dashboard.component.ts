@@ -18,4 +18,9 @@ import { UserProfileComponent } from '../../components/user-profile/user-profile
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  searchTerm: string = '';
+
+  onSearchChange(term: string) {
+    this.searchTerm = term;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular';
 import {
@@ -37,9 +37,12 @@ ModuleRegistry.registerModules([
   templateUrl: './referral-table.component.html',
   styleUrls: ['./referral-table.component.scss']
 })
-export class ReferralTableComponent implements OnInit {
+export class ReferralTableComponent implements OnInit, OnChanges {
+  @Input() searchTerm: string = '';
+  
   rowData: any[] = [];
-
+  filteredData: any[] = [];
+  
   columnDefs: ColDef[] = [
     { field: 'id', headerName: 'ID', flex: 1, cellClass: 'grey-cell' },
     { field: 'beneficiaryName', headerName: 'Beneficiary Name', flex: 2, cellClass: 'grey-cell' },
@@ -99,23 +102,42 @@ export class ReferralTableComponent implements OnInit {
   ngOnInit(): void {
     this.requestService.getRequests().subscribe(data => {
       console.log('Received data:', data);
-    this.rowData = data;
-    this.setGridHeight();
+      this.rowData = data;
+      this.filteredData = data;
+      this.setGridHeight();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchTerm']) {
+      this.applyFilter();
+    }
+  }
+
+  applyFilter(): void {
+    if (!this.searchTerm) {
+      this.filteredData = this.rowData;
+    } else {
+      const term = this.searchTerm.toLowerCase();
+      this.filteredData = this.rowData.filter(item => {
+        return Object.values(item).some(val =>
+          val && val.toString().toLowerCase().includes(term)
+        );
+      });
+    }
+    this.setGridHeight();
   }
 
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-
-    // Resize height based on rows count & row height (35 px)
     this.setGridHeight();
   }
 
   setGridHeight() {
     if (!this.gridApi) return;
 
-    const rowCount = this.rowData.length;
+    const rowCount = this.filteredData.length;
     const headerHeight = 25; // approx header height in px
     const rowHeight = 35;
     const height = headerHeight + rowCount * rowHeight;

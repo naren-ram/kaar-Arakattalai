@@ -1,5 +1,6 @@
 
-<app-menubar></app-menubar>
+
+<app-menubar (searchChange)="onSearchChange($event)"></app-menubar>
 
 <div class="dashboard-content">
   <div class="left-section">
@@ -8,7 +9,7 @@
   <div class="right-section">
     <app-summary-cons class="summarycons"></app-summary-cons>
     <div class="table-container">
-      <app-referral-table class="referraltable"></app-referral-table>
+      <app-referral-table class="referraltable" style="width: 100%;" [searchTerm]="searchTerm"></app-referral-table>
     </div>
   </div>
 </div>
