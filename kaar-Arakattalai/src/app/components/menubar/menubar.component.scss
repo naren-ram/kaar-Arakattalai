@@ -17,7 +17,7 @@
   font-family: 'DM Sans' !important;
   font-size: 16px;
   font-weight: 600;
-  color: #515965;
+  color: #535a63;
   flex: 1 1 auto;
   min-width: 150px;
 }
@@ -38,9 +38,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 8px 12px 4px 12px;
+  padding: 0;
   width: 300px;
- 
   box-sizing: border-box;
 }
 
@@ -68,16 +67,16 @@
 
 .search-input {
   font-family: 'DM Sans' !important;
-  padding: 4px 48px 4px 12px;
+  padding: 8px 48px 8px 12px;
   border: 1.5px solid #BFBFBF;
   border-radius: 6px;
   font-size: 14px;
   width: 100%;
-  height: 32px;
+  height: 40px;
   transition: all 0.2s ease;
   background-color: transparent;
   box-sizing: border-box;
-  color: #515965;
+  color: #E8E9EE;
 }
 
 .search-input::placeholder {
@@ -97,7 +96,7 @@
 .search-input:focus {
   outline: none;
   border-color: #EE4962;
-  box-shadow: 0 0 0 2px #EE496233;
+ 
   background-color: #ffffff;
 }
 
@@ -107,7 +106,7 @@
 
 .search-button {
   position: absolute;
-  right: 8px;
+  right: 6px;
   top: 50%;
   transform: translateY(-50%);
   background-color: #EE4961;
@@ -143,7 +142,7 @@
 
 .clear-button {
   position: absolute;
-  right: 70px;
+  right: 44px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
