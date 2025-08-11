@@ -17,6 +17,7 @@ export class MenubarComponent implements OnInit {
   searchTerm: string = '';
   
   @Output() searchChange = new EventEmitter<string>();
+  @Output() filterToggle = new EventEmitter<void>();
 
   constructor(private requestService: RequestService) {}
 
@@ -44,5 +45,9 @@ export class MenubarComponent implements OnInit {
   clearSearch(): void {
     this.searchTerm = '';
     this.searchChange.emit('');
+  }
+
+  onFilterIconClick(): void {
+    this.filterToggle.emit();
   }
 }
