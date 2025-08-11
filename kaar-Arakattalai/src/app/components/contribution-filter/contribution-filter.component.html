@@ -1,0 +1,23 @@
+<div class="filters">
+  <div class="filter">
+    <label>Select Year</label>
+    <select [(ngModel)]="selectedYear" (change)="emitChange()">
+      <option [ngValue]="null">Select Year</option>
+      <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
+    </select>
+  </div>
+  <div class="filter">
+    <label>Select Month</label>
+    <select [(ngModel)]="selectedMonth" (change)="emitChange()">
+      <option [ngValue]="null">Select Month</option>
+      <option *ngFor="let m of months" [ngValue]="m">{{ m }}</option>
+    </select>
+  </div>
+  <div class="filter">
+    <label>Contribution Type</label>
+    <select [(ngModel)]="selectedType" (change)="emitChange()">
+      <option [ngValue]="null">Contribution Type</option>
+      <option *ngFor="let t of types" [ngValue]="t">{{ t }}</option>
+    </select>
+  </div>
+</div>

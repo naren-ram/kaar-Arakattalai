@@ -7,9 +7,12 @@
     <app-user-profile></app-user-profile>
   </div>
   <div class="right-section">
-    <app-summary-cons class="summarycons"></app-summary-cons>
-    <div class="table-container">
-      <app-referral-table class="referraltable" style="width: 100%;" [searchTerm]="searchTerm"></app-referral-table>
+  <app-tab-switcher [selectedTab]="selectedTab" style="margin-bottom: 1.5rem;" (tabChange)="onTabChange($event)"></app-tab-switcher>
+    <div *ngIf="selectedTab === 'referrals'">
+      <app-summary-cons class="summarycons"></app-summary-cons>
+      <div class="table-container">
+        <app-referral-table class="referraltable" style="width: 100%;" [searchTerm]="searchTerm"></app-referral-table>
+      </div>
     </div>
   </div>
 </div>
